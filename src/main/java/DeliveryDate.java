@@ -3,7 +3,7 @@ import java.time.Month;
 
 public class DeliveryDate {
     public LocalDate getDeliveryDate(){
-        LocalDate localDate = LocalDate.now();
+        LocalDate localDate = getNow();
         int day = localDate.getDayOfMonth();
         Month month = localDate.getMonth();
         int year = localDate.getYear();
@@ -37,5 +37,9 @@ public class DeliveryDate {
             lastDay = 31;
         }
         return LocalDate.of(localDate.getYear(), localDate.getMonth(), lastDay);
+    }
+
+    protected LocalDate getNow() {
+        return LocalDate.now();
     }
 }
