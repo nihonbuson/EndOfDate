@@ -70,6 +70,66 @@ class DeliveryDateTest {
         assertEquals(LocalDate.of(2020,10,31),actualDate);
     }
 
+    @Nested
+    class _上旬の場合のテスト {
+        @Test
+        void _9日以前の場合は同月15日に日付が設定される() {
+            FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+            deliveryDate.setDate(LocalDate.of(2020,1,9));
+            LocalDate actualDate = deliveryDate.getDeliveryDate();
+            assertEquals(LocalDate.of(2020,1,15),actualDate);
+        }
+
+        @Test
+        void _10日以降の場合は同月月末に日付が設定される() {
+            FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+            deliveryDate.setDate(LocalDate.of(2020,1,10));
+            LocalDate actualDate = deliveryDate.getDeliveryDate();
+            assertEquals(LocalDate.of(2020,1,31),actualDate);
+        }
+    }
+
+    @Nested
+    class _下旬の場合のテスト {
+        @Test
+        void _24日以前の場合は同月月末に日付が設定される() {
+            FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+            deliveryDate.setDate(LocalDate.of(2020,1,24));
+            LocalDate actualDate = deliveryDate.getDeliveryDate();
+            assertEquals(LocalDate.of(2020,1,31),actualDate);
+        }
+
+        @Test
+        void _25日以降の場合は次月月末に日付が設定される() {
+            FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+            deliveryDate.setDate(LocalDate.of(2020,1,25));
+            LocalDate actualDate = deliveryDate.getDeliveryDate();
+            assertEquals(LocalDate.of(2020,2,29),actualDate);
+        }
+    }
+
+    @Nested
+    class _年末の場合のテスト {
+        @Test
+        void _12月19日以前の場合は同月月末に日付が設定される() {
+            FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+            deliveryDate.setDate(LocalDate.of(2020,12,19));
+            LocalDate actualDate = deliveryDate.getDeliveryDate();
+            assertEquals(LocalDate.of(2020,12,31),actualDate);
+        }
+
+        @Test
+        void _12月20日以降の場合は次月月末に日付が設定される() {
+            FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+            deliveryDate.setDate(LocalDate.of(2020,12,20));
+            LocalDate actualDate = deliveryDate.getDeliveryDate();
+            assertEquals(LocalDate.of(2020,1,31),actualDate);
+        }
+    }
+
+
+
+
     private class FakeDeliveryDate extends DeliveryDate {
         private LocalDate date;
 
