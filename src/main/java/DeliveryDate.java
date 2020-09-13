@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Arrays;
 
 public class DeliveryDate {
     public LocalDate getDeliveryDate(){
@@ -23,20 +24,14 @@ public class DeliveryDate {
 
     protected int getLastDay(int year, Month month) {
         int lastDay;
-        if(month.equals(Month.APRIL)) {
+        if (Arrays.asList(Month.APRIL, Month.JUNE, Month.SEPTEMBER, Month.NOVEMBER).contains(month) ) {
             lastDay = 30;
-        } else if(month.equals(Month.JUNE)){
-            lastDay = 30;
-        } else if(month.equals(Month.SEPTEMBER)){
-            lastDay = 30;
-        } else if(month.equals(Month.NOVEMBER)){
-            lastDay = 30;
-        } else if(month.equals(Month.FEBRUARY)){
-            if(year%400 == 0){
+        } else if (month.equals(Month.FEBRUARY)) {
+            if (year % 400 == 0) {
                 lastDay = 29;
-            } else if(year%100 == 0) {
+            } else if (year % 100 == 0) {
                 lastDay = 28;
-            } else if(year%4 == 0){
+            } else if (year % 4 == 0) {
                 lastDay = 29;
             } else {
                 lastDay = 28;
