@@ -18,6 +18,11 @@ public class DeliveryDate {
             month.plus(1L);
         }
 
+        int lastDay = getLastDay(year, month);
+        return LocalDate.of(localDate.getYear(), localDate.getMonth(), lastDay);
+    }
+
+    int getLastDay(int year, Month month) {
         int lastDay;
         if(month.equals(Month.APRIL)) {
             lastDay = 30;
@@ -36,6 +41,6 @@ public class DeliveryDate {
         } else {
             lastDay = 31;
         }
-        return LocalDate.of(localDate.getYear(), localDate.getMonth(), lastDay);
+        return lastDay;
     }
 }
