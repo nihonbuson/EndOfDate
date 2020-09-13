@@ -54,11 +54,27 @@ class DeliveryDateTest {
         }
 
         @Test
-        void _4で割り切れる年の2月の月末になる場合のテスト() {
+        void _4で割り切れるが100で割り切れない年の2月の月末になる場合のテスト() {
             FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
             deliveryDate.setDate(LocalDate.of(2020,2,13));
             LocalDate actualDate = deliveryDate.getDeliveryDate();
             assertEquals(LocalDate.of(2020,2,29),actualDate);
+        }
+
+        @Test
+        void _100で割り切れるが400で割り切れない年の2月の月末になる場合のテスト() {
+            FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+            deliveryDate.setDate(LocalDate.of(2100,2,13));
+            LocalDate actualDate = deliveryDate.getDeliveryDate();
+            assertEquals(LocalDate.of(2100,2,28),actualDate);
+        }
+
+        @Test
+        void _400で割り切れる年の2月の月末になる場合のテスト() {
+            FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+            deliveryDate.setDate(LocalDate.of(2000,2,13));
+            LocalDate actualDate = deliveryDate.getDeliveryDate();
+            assertEquals(LocalDate.of(2000,2,29),actualDate);
         }
     }
 
