@@ -123,7 +123,7 @@ class DeliveryDateTest {
             FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
             deliveryDate.setDate(LocalDate.of(2020,12,20));
             LocalDate actualDate = deliveryDate.getDeliveryDate();
-            assertEquals(LocalDate.of(2020,1,31),actualDate);
+            assertEquals(LocalDate.of(2021,1,31),actualDate);
         }
     }
 
