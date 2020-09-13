@@ -1,11 +1,14 @@
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DeliveryDateTest {
 
     @Test
     void _配送日のテスト() {
-        new DeliveryDate().getDeliveryDate();
-        assertEquals(1,1);
+        LocalDate actualDate = new DeliveryDate().getDeliveryDate();
+        assertEquals(LocalDate.of(2020,9,30),actualDate);
     }
 }
