@@ -12,9 +12,9 @@ public class DeliveryDate {
             return LocalDate.of(localDate.getYear(), localDate.getMonth(), 15);
         }
 
-        if(day >= 25){
+        if (month.equals(Month.DECEMBER) && day >= 20) {
             month = month.plus(1L);
-        } else if (month.equals(Month.DECEMBER) && day >= 20) {
+        } else if(day >= 25){
             month = month.plus(1L);
         }
 
