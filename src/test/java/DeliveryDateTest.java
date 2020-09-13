@@ -100,11 +100,11 @@ class DeliveryDateTest {
         }
 
         @Test
-        void _25日以降の場合は次月月末に日付が設定される() {
+        void _25日以降の場合は次月15日に日付が設定される() {
             FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
             deliveryDate.setDate(LocalDate.of(2020,1,25));
             LocalDate actualDate = deliveryDate.getDeliveryDate();
-            assertEquals(LocalDate.of(2020,2,29),actualDate);
+            assertEquals(LocalDate.of(2020,2,15),actualDate);
         }
     }
 
@@ -119,11 +119,11 @@ class DeliveryDateTest {
         }
 
         @Test
-        void _12月20日以降の場合は次月月末に日付が設定される() {
+        void _12月20日以降の場合は次月15日に日付が設定される() {
             FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
             deliveryDate.setDate(LocalDate.of(2020,12,20));
             LocalDate actualDate = deliveryDate.getDeliveryDate();
-            assertEquals(LocalDate.of(2021,1,31),actualDate);
+            assertEquals(LocalDate.of(2021,1,15),actualDate);
         }
     }
 

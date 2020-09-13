@@ -13,10 +13,9 @@ public class DeliveryDate {
         }
 
         if (month.equals(Month.DECEMBER) && day >= 20) {
-            year++;
-            month = month.plus(1L);
+            return LocalDate.of(localDate.getYear() + 1, localDate.getMonth().plus(1L), 15);
         } else if(day >= 25){
-            month = month.plus(1L);
+            return LocalDate.of(localDate.getYear(), localDate.getMonth().plus(1L), 15);
         }
 
         int lastDay;
