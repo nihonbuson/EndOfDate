@@ -20,13 +20,13 @@ public class DeliveryDate {
 
         int lastDay;
         if(month.equals(Month.APRIL)) {
-            lastDay = 31;
+            lastDay = 30;
         } else if(month.equals(Month.JUNE)){
-            lastDay = 31;
+            lastDay = 30;
         } else if(month.equals(Month.SEPTEMBER)){
-            lastDay = 31;
+            lastDay = 30;
         } else if(month.equals(Month.NOVEMBER)){
-            lastDay = 31;
+            lastDay = 30;
         } else if(month.equals(Month.FEBRUARY)){
             if(year%4 == 0){
                 lastDay = 29;
@@ -34,7 +34,7 @@ public class DeliveryDate {
                 lastDay = 28;
             }
         } else {
-            lastDay = 30;
+            lastDay = 31;
         }
         return LocalDate.of(localDate.getYear(), localDate.getMonth(), lastDay);
     }
