@@ -33,7 +33,15 @@ public class DeliveryDate {
             lastDay = 30;
         } else if(month.equals(Month.FEBRUARY)){
             if(year%4 == 0){
-                lastDay = 29;
+                if(year%100 == 0){
+                    if(year%400 == 0){
+                        lastDay = 29;
+                    } else {
+                        lastDay = 28;
+                    }
+                } else {
+                    lastDay = 29;
+                }
             } else {
                 lastDay = 28;
             }
