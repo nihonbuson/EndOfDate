@@ -8,15 +8,22 @@ class DeliveryDateTest {
 
     @Test
     void _小の月の月末になる場合のテスト() {
-        DeliveryDate deliveryDate = new FakeDeliveryDate();
+        FakeDeliveryDate deliveryDate = new FakeDeliveryDate();
+        deliveryDate.setDate(LocalDate.of(2020,9,13));
         LocalDate actualDate = deliveryDate.getDeliveryDate();
         assertEquals(LocalDate.of(2020,9,30),actualDate);
     }
 
     private class FakeDeliveryDate extends DeliveryDate {
+        private LocalDate date;
+
         @Override
         protected LocalDate getNow() {
-            return LocalDate.of(2020,9,13);
+            return date;
+        }
+
+        public void setDate(LocalDate date) {
+            this.date = date;
         }
     }
 
