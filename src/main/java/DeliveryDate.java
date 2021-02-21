@@ -8,10 +8,6 @@ public class DeliveryDate {
         Month month = localDate.getMonth();
         int year = localDate.getYear();
 
-        if(day < 10){
-            return LocalDate.of(localDate.getYear(), localDate.getMonth(), 15);
-        }
-
         if(day >= 25){
             month.plus(1L);
         } else if (month.equals(Month.DECEMBER) && day >= 20) {
